@@ -20,14 +20,13 @@ class PwdTextField extends StatelessWidget {
       alignment: Alignment.center,
       height: ScreenUtils.height(44),
       margin: EdgeInsets.only(
-          top: ScreenUtils.height(16),
-          left: ScreenUtils.width(20),
-          right: ScreenUtils.width(20)),
+          top: ScreenUtils.height(16)),
       padding: EdgeInsets.only(left: ScreenUtils.width(10)),
       decoration: BoxDecoration(
           color: const Color.fromARGB(31, 186, 186, 186),
           borderRadius: BorderRadius.circular(8)),
       child: TextField(
+        cursorColor: Colors.blue, //光标颜色
         controller: textEditingController,
         obscureText: true,
         style: TextStyle(fontSize: ScreenUtils.fontSize(15)),

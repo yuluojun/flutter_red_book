@@ -31,6 +31,7 @@ class RegisterView extends GetView<RegisterController> {
         ],
       ),
       body: ListView(
+        padding: EdgeInsets.all(ScreenUtils.width(20)),
         children: [
           Logo(),
           NameTextField(

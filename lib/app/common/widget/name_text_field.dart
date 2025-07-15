@@ -20,12 +20,12 @@ class NameTextField extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       height: ScreenUtils.height(44),
-      margin: EdgeInsets.only(left: ScreenUtils.width(20), right: ScreenUtils.width(20)),
       padding: EdgeInsets.only(left: ScreenUtils.width(10)),
       decoration: BoxDecoration(
           color: const Color.fromARGB(31, 186, 186, 186),
           borderRadius: BorderRadius.circular(8)),
       child: TextField(
+        cursorColor: Colors.blue, //光标颜色
         inputFormatters: [
           FilteringTextInputFormatter.allow(
               RegExp("[a-zA-Z]|[\u4e00-\u9fa5]|[0-9]")), //只能输入汉字或者字母或数字

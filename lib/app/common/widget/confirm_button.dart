@@ -11,9 +11,7 @@ class ConfirmButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
-          top: ScreenUtils.height(30),
-          left: ScreenUtils.width(20),
-          right: ScreenUtils.width(20)),
+          top: ScreenUtils.height(30),),
       height: ScreenUtils.height(44),
       child: ElevatedButton(
         style: ButtonStyle(
