@@ -3,6 +3,7 @@ part of 'app_pages.dart';
 
 abstract class Routes {
   Routes._();
+
   static const TABS = _Paths.TABS;
   static const CATEGORY = _Paths.CATEGORY;
   static const SEARCHS = _Paths.SEARCHS;
@@ -10,6 +11,7 @@ abstract class Routes {
 
 abstract class _Paths {
   _Paths._();
+
   static const TABS = '/tabs';
   static const CATEGORY = '/category';
   static const SEARCHS = '/searchs';

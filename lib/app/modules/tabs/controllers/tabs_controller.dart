@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:study/app/modules/user/views/user_view.dart';
 
-import '../../home/views/home_view.dart';
 import '../../shop/views/shop_view.dart';
 import '../../videoLibrary/views/video_library_view.dart';
+import '../views/tabBar_view.dart';
 
 class TabsController extends GetxController {
   RxInt currentIndex = 0.obs;
   PageController pageController = PageController(initialPage: 0);
   List<Widget> pageList = [
-    HomeView(),
+    TabBars(),
     VideoLibraryView(),
     Text(''),
     ShopView(),
