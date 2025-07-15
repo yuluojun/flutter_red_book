@@ -107,127 +107,134 @@ class HomeView extends GetView<HomeController> {
                   physics: const NeverScrollableScrollPhysics(),
                   // 禁止滚动
                   itemBuilder: (context, index) {
-                    return Container(
-                      clipBehavior: Clip.hardEdge, // 超出部分可裁剪
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.3),
-                              offset: Offset(
-                                  ScreenUtils.width(1), ScreenUtils.width(1)),
-                            )
-                          ]),
-                      child: Stack(
-                        children: [
-                          Column(
-                            children: [
-                              Container(
-                                height: ScreenUtils.width(200),
-                                width: double.infinity,
-                                child: Image.network(
-                                    "${controller.videoList[index].thumb}", fit: BoxFit.cover),
-                              ),
-                              Container(
-                                width: double.infinity,
-                                padding: EdgeInsets.only(
-                                    top: ScreenUtils.width(6),
-                                    left: ScreenUtils.width(10),
-                                    right: ScreenUtils.width(10),
-                                    bottom: ScreenUtils.width(10)),
-                                child: Text(
-                                  "${controller.videoList[index].title}",
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontSize: ScreenUtils.fontSize(13),
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.black87,
+                    return InkWell(
+                      child: Container(
+                        clipBehavior: Clip.hardEdge, // 超出部分可裁剪
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.3),
+                                offset: Offset(
+                                    ScreenUtils.width(1), ScreenUtils.width(1)),
+                              )
+                            ]),
+                        child: Stack(
+                          children: [
+                            Column(
+                              children: [
+                                Container(
+                                  height: ScreenUtils.width(200),
+                                  width: double.infinity,
+                                  child: Image.network(
+                                      "${controller.videoList[index].thumb}", fit: BoxFit.cover),
+                                ),
+                                Container(
+                                  width: double.infinity,
+                                  padding: EdgeInsets.only(
+                                      top: ScreenUtils.width(6),
+                                      left: ScreenUtils.width(10),
+                                      right: ScreenUtils.width(10),
+                                      bottom: ScreenUtils.width(10)),
+                                  child: Text(
+                                    "${controller.videoList[index].title}",
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontSize: ScreenUtils.fontSize(13),
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.black87,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.only(
-                                            left: ScreenUtils.width(10),
-                                            bottom: ScreenUtils.width(20)),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          child: CircleAvatar(
-                                            radius: ScreenUtils.width(10),
-                                            child: Image.network(
-                                                "${controller.videoList[index].head}",
-                                                fit: BoxFit.cover),
+                                Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              left: ScreenUtils.width(10),
+                                              bottom: ScreenUtils.width(20)),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                            BorderRadius.circular(10),
+                                            child: CircleAvatar(
+                                              radius: ScreenUtils.width(10),
+                                              child: Image.network(
+                                                  "${controller.videoList[index].head}",
+                                                  fit: BoxFit.cover),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(
-                                            left: ScreenUtils.width(6),
-                                            bottom: ScreenUtils.width(20)),
-                                        child: Text(
-                                          "${controller.videoList[index].author}",
-                                          style: TextStyle(
-                                            fontSize: ScreenUtils.fontSize(11),
-                                            color: Colors.black87,
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.only(
-                                            bottom: ScreenUtils.width(20)),
-                                        child: const Icon(
-                                          IconFonts.meitiku,
-                                          size: 12,
-                                          color: Colors.black54,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(
-                                            bottom: ScreenUtils.width(20),
-                                            left: ScreenUtils.width(6),
-                                            right: ScreenUtils.width(10)),
-                                        child: Text(
-                                            numFormat(int.parse(controller
-                                                .videoList[index].hits!)),
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              left: ScreenUtils.width(6),
+                                              bottom: ScreenUtils.width(20)),
+                                          child: Text(
+                                            "${controller.videoList[index].author}",
                                             style: TextStyle(
-                                              fontSize:
-                                                  ScreenUtils.fontSize(11),
+                                              fontSize: ScreenUtils.fontSize(11),
                                               color: Colors.black87,
-                                            )),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                          Positioned(
-                            top: 10,
-                            left: 0,
-                            right: -130,
-                            child: CircleAvatar(
-                                radius: ScreenUtils.width(10),
-                                backgroundColor: Colors.grey,
-                                child: const Icon(
-                                  Icons.play_arrow,
-                                  color: Colors.white,
-                                  size: 13,
-                                )),
-                          )
-                        ],
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              bottom: ScreenUtils.width(20)),
+                                          child: const Icon(
+                                            IconFonts.duomeiti,
+                                            size: 12,
+                                            color: Colors.black54,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              bottom: ScreenUtils.width(20),
+                                              left: ScreenUtils.width(6),
+                                              right: ScreenUtils.width(10)),
+                                          child: Text(
+                                              numFormat(int.parse(controller
+                                                  .videoList[index].hits!)),
+                                              style: TextStyle(
+                                                fontSize:
+                                                ScreenUtils.fontSize(11),
+                                                color: Colors.black87,
+                                              )),
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                            Positioned(
+                              top: 10,
+                              left: 0,
+                              right: -130,
+                              child: CircleAvatar(
+                                  radius: ScreenUtils.width(10),
+                                  backgroundColor: Colors.grey,
+                                  child: const Icon(
+                                    Icons.play_arrow,
+                                    color: Colors.white,
+                                    size: 13,
+                                  )),
+                            )
+                          ],
+                        ),
                       ),
+                      onTap: (){
+                        Get.toNamed("/video", arguments: {
+                          "vid": controller.videoList[index].id,
+                        });
+                      },
                     );
                   },
                 ),

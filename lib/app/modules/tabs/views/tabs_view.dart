@@ -53,13 +53,13 @@ class TabsView extends GetView<TabsController> {
                 },
                 items: const [
                   BottomNavigationBarItem(
-                      icon: Icon(IconFonts.shouye), label: '首页'),
+                      icon: Icon(IconFonts.zhuye), label: '首页'),
                   BottomNavigationBarItem(
-                      icon: Icon(IconFonts.meitiku), label: '媒体库'),
+                      icon: Icon(IconFonts.videoAlbum), label: '媒体库'),
                   BottomNavigationBarItem(
-                      icon: Icon(IconFonts.loading), label: ''),
+                      icon: Icon(IconFonts.shangcheng), label: ''),
                   BottomNavigationBarItem(
-                      icon: Icon(IconFonts.gouwu), label: '购物'),
+                      icon: Icon(IconFonts.shangcheng), label: '购物'),
                   BottomNavigationBarItem(
                       icon: Icon(IconFonts.wode), label: '我的')
                 ],

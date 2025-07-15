@@ -6,6 +6,8 @@ import '../modules/searchs/bindings/searchs_binding.dart';
 import '../modules/searchs/views/searchs_view.dart';
 import '../modules/tabs/bindings/tabs_binding.dart';
 import '../modules/tabs/views/tabs_view.dart';
+import '../modules/video/bindings/video_binding.dart';
+import '../modules/video/views/video_view.dart';
 
 part 'app_routes.dart';
 
@@ -29,6 +31,11 @@ class AppPages {
       name: _Paths.SEARCHS,
       page: () => const SearchsView(),
       binding: SearchsBinding(),
+    ),
+    GetPage(
+      name: _Paths.VIDEO,
+      page: () => const VideoView(),
+      binding: VideoBinding(),
     ),
   ];
 }
