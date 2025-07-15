@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
+import 'package:study/app/modules/register/views/register_view.dart';
 
 import '../modules/category/bindings/category_binding.dart';
 import '../modules/category/views/category_view.dart';
+import '../modules/register/bindings/register_binding.dart';
 import '../modules/searchs/bindings/searchs_binding.dart';
 import '../modules/searchs/views/searchs_view.dart';
 import '../modules/tabs/bindings/tabs_binding.dart';
@@ -14,7 +16,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.TABS;
+  static const INITIAL = Routes.REGISTER;
 
   static final routes = [
     GetPage(
@@ -36,6 +38,11 @@ class AppPages {
       name: _Paths.VIDEO,
       page: () => const VideoView(),
       binding: VideoBinding(),
+    ),
+    GetPage(
+      name: _Paths.REGISTER,
+      page: () => const RegisterView(),
+      binding: RegisterBinding(),
     ),
   ];
 }

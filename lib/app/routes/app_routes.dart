@@ -8,6 +8,7 @@ abstract class Routes {
   static const CATEGORY = _Paths.CATEGORY;
   static const SEARCHS = _Paths.SEARCHS;
   static const VIDEO = _Paths.VIDEO;
+  static const REGISTER = _Paths.REGISTER;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const CATEGORY = '/category';
   static const SEARCHS = '/searchs';
   static const VIDEO = '/video';
+  static const REGISTER = '/register';
 }

@@ -64,10 +64,10 @@ class _VideoPlayerItemState extends State<VideoPlayerItem>
   }
 
   Widget _backgroundImage() {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      child: Image.network(widget.thumb),
+    return SizedBox(
+      width: ScreenUtils.screenWidth(),
+      height: ScreenUtils.screenHeight(),
+      child: Image.network(widget.thumb, fit: BoxFit.fill),
     );
   }
 
@@ -104,8 +104,8 @@ class _VideoPlayerItemState extends State<VideoPlayerItem>
               child: Stack(
                 children: [
                   SizedBox(
-                    width: double.infinity,
-                    height: double.infinity,
+                    width: ScreenUtils.screenWidth(),
+                    height: ScreenUtils.screenHeight(),
                     child: AspectRatio(
                       aspectRatio: _videoPlayerController.value.aspectRatio,
                       child: VideoPlayer(_videoPlayerController),
@@ -116,19 +116,7 @@ class _VideoPlayerItemState extends State<VideoPlayerItem>
               ),
             );
           } else {
-            return Container(
-              alignment: Alignment.center,
-              child: Column(
-                children: [
-                  LinearProgressIndicator(
-                    backgroundColor: Colors.grey,
-                    valueColor: AlwaysStoppedAnimation(Colors.white),
-                    minHeight: 1.0,
-                  ),
-                  _backgroundImage(),
-                ],
-              ),
-            );
+            return _backgroundImage();
           }
         });
   }

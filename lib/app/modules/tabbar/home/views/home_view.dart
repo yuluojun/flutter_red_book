@@ -232,7 +232,7 @@ class HomeView extends GetView<HomeController> {
                       ),
                       onTap: (){
                         Get.toNamed("/video", arguments: {
-                          "vid": controller.videoList[index].id,
+                          "vid": controller.videoList[index].vid,
                         });
                       },
                     );
