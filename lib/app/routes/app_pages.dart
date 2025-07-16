@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/category/bindings/category_binding.dart';
 import '../modules/category/views/category_view.dart';
+import '../modules/login/bindings/login_binding.dart';
+import '../modules/login/views/login_view.dart';
 import '../modules/phone/bindings/phone_binding.dart';
 import '../modules/phone/views/phone_view.dart';
 import '../modules/register/bindings/register_binding.dart';
@@ -18,7 +20,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.PHONE;
+  static const INITIAL = Routes.TABS;
 
   static final routes = [
     GetPage(
@@ -50,6 +52,11 @@ class AppPages {
       name: _Paths.PHONE,
       page: () => const PhoneView(),
       binding: PhoneBinding(),
+    ),
+    GetPage(
+      name: _Paths.LOGIN,
+      page: () => const LoginView(),
+      binding: LoginBinding(),
     ),
   ];
 }
