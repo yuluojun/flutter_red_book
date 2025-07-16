@@ -148,11 +148,12 @@ class VideoView extends GetView<VideoController> {
                               )),
                         ),
                       ),
-                      _bottomView(index),
+                      _bottomView(context, index),
                     ],
                   );
                 },
                 onPageChanged: (index) {
+                  controller.getSlideVideoData(index);
                   if (index + 2 == controller.videoList.length) {
                     controller.getVideoListData(controller.videoList[0].catid);
                   }
@@ -163,7 +164,7 @@ class VideoView extends GetView<VideoController> {
     );
   }
 
-  _bottomView(index) {
+  _bottomView(context, index) {
     return Positioned(
         left: 0,
         right: 0,
@@ -233,26 +234,56 @@ class VideoView extends GetView<VideoController> {
                                         color: Colors.white,
                                         fontSize: ScreenUtils.fontSize(12))),
                               )),
-                          const Icon(IconFonts.xingxing,
-                              color: Colors.white, size: 30),
+                          InkWell(
+                            onTap: () {
+                              controller.doCollect(context, index);
+                            },
+                            child: Obx(() => Icon(IconFonts.xingxing,
+                                color: controller.isCollected.value
+                                    ? Colors.orangeAccent
+                                    : Colors.white,
+                                size: 30)),
+                          ),
                           Obx(
-                            () => Container(
-                              margin: EdgeInsets.only(
-                                  left: ScreenUtils.width(6),
-                                  right: ScreenUtils.width(10)),
-                              child: Text(
-                                  numFormat(int.parse(
-                                      "${controller.videoList[index].count}")),
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: ScreenUtils.fontSize(12))),
+                            () => InkWell(
+                              onTap: () {
+                                controller.doCollect(context, index);
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(
+                                    left: ScreenUtils.width(6),
+                                    right: ScreenUtils.width(10)),
+                                child: controller.videoData.value.count != null
+                                    ? Text(
+                                        numFormat(controller.collectNum.value +
+                                            int.parse(
+                                                "${controller.videoList[index].count}")),
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: ScreenUtils.fontSize(12)))
+                                    : controller.videoList.length > 1
+                                        ? Text(
+                                            numFormat(controller
+                                                    .collectNum.value +
+                                                int.parse(
+                                                    "${controller.videoList[0].count}")),
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize:
+                                                    ScreenUtils.fontSize(12)))
+                                        : Text("0",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize:
+                                                    ScreenUtils.fontSize(12))),
+                              ),
                             ),
                           ),
                           Container(
                             margin: EdgeInsets.only(
                                 left: ScreenUtils.width(6),
                                 right: ScreenUtils.width(20)),
-                            child: Icon(IconFonts.pinglun,
+                            child: const Icon(IconFonts.pinglun,
                                 color: Colors.white, size: 30),
                           ),
                         ],
