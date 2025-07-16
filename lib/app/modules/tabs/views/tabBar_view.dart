@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:study/app/common/service/screenUtils.dart';
 import 'package:study/app/modules/tabbar/basketball/views/basketball_view.dart';
 import 'package:study/app/modules/tabbar/feel/views/feel_view.dart';
 import 'package:study/app/modules/tabbar/funny/views/funny_view.dart';
 import 'package:study/app/modules/tabbar/home/views/home_view.dart';
 import 'package:study/app/modules/tabbar/school/views/school_view.dart';
+import 'package:study/app/routes/app_pages.dart';
 
 class TabBars extends StatefulWidget {
   const TabBars({super.key});
@@ -55,20 +58,26 @@ class _TabBarsState extends State<TabBars> with SingleTickerProviderStateMixin {
       right: 0,
       child: AppBar(
         backgroundColor: Colors.blue,
-        title: Container(
-          width: double.infinity,
-          height: ScreenUtil().setHeight(40),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Row(
-            children: [
-              const SizedBox(width: 16),
-              const Icon(Icons.search, color: Colors.black12),
-              const SizedBox(width: 10),
-              Text("搜索", style: TextStyle(fontSize: 14, color: Colors.black12))
-            ],
+        title: InkWell(
+          onTap: () {
+            Get.toNamed(Routes.SEARCHS);
+          },
+          child: Container(
+            width: double.infinity,
+            height: ScreenUtil().setHeight(40),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Row(
+              children: [
+                const SizedBox(width: 16),
+                const Icon(Icons.search, color: Colors.black12),
+                const SizedBox(width: 10),
+                Text("搜索",
+                    style: TextStyle(fontSize: 14, color: Colors.black12))
+              ],
+            ),
           ),
         ),
       ),
@@ -89,7 +98,9 @@ class _TabBarsState extends State<TabBars> with SingleTickerProviderStateMixin {
             decoration: BoxDecoration(color: Colors.blue),
             child: TabBar(
               tabAlignment: TabAlignment.start,
-              labelStyle: TextStyle(fontSize: ScreenUtils.fontSize(16), fontWeight: FontWeight.bold),
+              labelStyle: TextStyle(
+                  fontSize: ScreenUtils.fontSize(16),
+                  fontWeight: FontWeight.bold),
               tabs: tabs.map((value) {
                 return Tab(child: Text(value));
               }).toList(),

@@ -7,12 +7,14 @@ import 'package:study/app/common/tool/is_empty.dart';
 import 'package:study/app/common/tool/shared_preference.dart';
 import 'package:study/app/common/tool/toast.dart';
 import 'package:study/app/models/video_model.dart';
+import 'package:study/app/modules/videoLibrary/controllers/video_library_controller.dart';
 
 import '../../../common/service/httpsApi.dart';
 import '../../../models/banner_list.dart';
 
 class VideoController extends GetxController {
   RxList<BannerListData> videoList = <BannerListData>[].obs;
+  VideoLibraryController videoLibraryController = Get.put(VideoLibraryController());
   HttpsApi httpsApi = HttpsApi();
   HttpsApis httpsApis = HttpsApis();
   RxInt page = 1.obs;
@@ -63,7 +65,7 @@ class VideoController extends GetxController {
   doCollect(context, index) async {
     // https://p.flutterschool.cn/api/collect/add/
     var userName = await SharedPreference.getString(Constants.USER_NAME);
-    if (isNotEmpty(userName)) {
+    if (userName != null && !isEmpty(userName)) {
       var apiUrl = "api/collect/add/";
       var params = {
         "username": userName,
@@ -83,7 +85,12 @@ class VideoController extends GetxController {
           isCollected.value = false;
           getCollectNum(videoList[index].vid);
         }
+        videoLibraryController.refreshVideoData();
       }
+    } else {
+      Future.delayed(const Duration(seconds: 1), () {
+        Get.toNamed("/login");
+      });
     }
     update();
   }

@@ -25,7 +25,6 @@ class TabsView extends GetView<TabsController> {
             color: Colors.white,
             borderRadius: BorderRadius.circular(24),
           ),
-
           child: FloatingActionButton(
             backgroundColor: Colors.blue,
             foregroundColor: Colors.white,
@@ -47,9 +46,18 @@ class TabsView extends GetView<TabsController> {
                 currentIndex: controller.currentIndex.value,
                 selectedFontSize: ScreenUtils.fontSize(12),
                 unselectedFontSize: ScreenUtils.fontSize(12),
-                onTap: (index) {
-                  controller.setCurrentIndex(index);
-                  controller.pageController.jumpToPage(index);
+                onTap: (index) async{
+                  if (index == 1) {
+                    if (await controller.isUserLogin()) {
+                      controller.setCurrentIndex(index);
+                      controller.pageController.jumpToPage(index);
+                    } else {
+                      Get.toNamed("/login");
+                    }
+                  } else {
+                    controller.setCurrentIndex(index);
+                    controller.pageController.jumpToPage(index);
+                  }
                 },
                 items: const [
                   BottomNavigationBarItem(
